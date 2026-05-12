@@ -48,15 +48,6 @@ public class SecurityConfiguration {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder);
-        // authProvider.setHideUserNotFoundExceptions(false);
-        // set ẩn message của
-        // UserNotFoundException
-        // Tuy nhiên thì mặc định Spring sẽ ẩn dòng này đi là để tăng
-        // mức độ bảo mật, để hacker không biết được tài khoản đó có
-        // tồn tại
-        // Giả sử nếu như ta hiện ra thông báo sai mật khẩu thì
-        // hacker sẽ biết là tên tài khoản đúng rồi giờ chỉ cần tra
-        // mật khẩu nữa thôi
 
         return authProvider;
     }
@@ -71,8 +62,6 @@ public class SecurityConfiguration {
     @Bean
     public SpringSessionRememberMeServices rememberMeServices() {
         SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
-        // optionally customize
-        rememberMeServices.setAlwaysRemember(true); // Default expire time is 30 days <==> 2592000 seconds
         return rememberMeServices;
     }
 
@@ -135,6 +124,9 @@ public class SecurityConfiguration {
                 .rememberMe(r -> r.rememberMeServices(rememberMeServices()))
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
                         .failureUrl("/login?error")
                         .successHandler(customSuccessHandler()) // Điều hướng USER -> Homepage và ADMIN -> Admin sau
                         // khi đăng nhập và xác định role thành công

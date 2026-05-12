@@ -1,23 +1,15 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib prefix="form"
-uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Login - Laptopshop</title>
     <link href="/css/styles.css" rel="stylesheet" />
-    <script
-      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
   </head>
 
   <body class="bg-primary">
@@ -34,58 +26,34 @@ uri="http://www.springframework.org/tags/form" %>
                   <div class="card-body">
                     <form method="post" action="/login">
                       <c:if test="${param.error != null}">
-                        <div class="my-2" style="color: red">
-                          Invalid email or password.
-                        </div>
+                        <div class="my-2" style="color: red">Invalid email or password.</div>
                       </c:if>
                       <!-- c:if nếu có lỗi thì in ra-->
                       <c:if test="${param.logout != null}">
                         <!-- Nếu như trên đường link url có keyword logout thì-->
-                        <div class="my-2" style="color: green">
-                          Logout success
-                        </div>
+                        <div class="my-2" style="color: green">Logout success</div>
                       </c:if>
 
                       <div class="form-floating mb-3">
-                        <input
-                          class="form-control"
-                          type="email"
-                          placeholder="name@example.com"
-                          name="username"
-                        />
+                        <input class="form-control" type="email" placeholder="name@example.com" name="username" />
                         <label>Email address</label>
                       </div>
                       <div class="form-floating mb-3">
-                        <input
-                          class="form-control"
-                          type="password"
-                          placeholder="Password"
-                          name="password"
-                        />
+                        <input class="form-control" type="password" placeholder="Password" name="password" />
                         <label>Password</label>
                       </div>
                       <div class="mb-3">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          name="password"
-                        />
+                        <input class="form-check-input" type="checkbox" name="remember-me" value="true" />
                         <label>Remember me</label>
                       </div>
 
                       <div>
-                        <input
-                          type="hidden"
-                          name="${_csrf.parameterName}"
-                          value="${_csrf.token}"
-                        />
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                       </div>
 
                       <div class="mt-4 mb-0">
                         <div class="d-grid">
-                          <button class="btn btn-primary btn-block">
-                            Login
-                          </button>
+                          <button class="btn btn-primary btn-block">Login</button>
                         </div>
                       </div>
                     </form>
@@ -102,10 +70,7 @@ uri="http://www.springframework.org/tags/form" %>
         </main>
       </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js"></script>
   </body>
 </html>
